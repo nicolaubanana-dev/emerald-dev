@@ -484,7 +484,7 @@ button:focus-visible {
   }
 }
 
-/* 8. Visual esmeralda: fundo animado e efeitos --------------------------- */
+/* 8. fundo animado e efeitos --------------------------- */
 :root {
   color-scheme: dark;
 }
@@ -719,4 +719,91 @@ button:focus-visible {
 .tela-boas-vindas.fade-out {
   opacity: 0;
   pointer-events: none;
+}
+
+/* Background animado da tela de boas-vindas */
+
+.tela-boas-vindas {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Camada de iluminação */
+.fundo-animado {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Luzes */
+.fundo-animado__luz {
+  position: absolute;
+  display: block;
+  width: 35rem;
+  height: 35rem;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.18;
+  will-change: transform;
+}
+
+.fundo-animado__luz--1 {
+  background: #00e69a;
+  top: -15rem;
+  right: -10rem;
+  animation: mover-luz-1 14s ease-in-out infinite alternate;
+}
+
+.fundo-animado__luz--2 {
+  background: #087f5b;
+  bottom: -20rem;
+  left: 10%;
+  animation: mover-luz-2 18s ease-in-out infinite alternate;
+}
+
+.fundo-animado__luz--3 {
+  background: #34e0a1;
+  top: 40%;
+  left: 45%;
+  width: 20rem;
+  height: 20rem;
+  opacity: 0.10;
+  animation: mover-luz-3 12s ease-in-out infinite alternate;
+}
+
+/* Movimentação animação da tela de boas vindas carambolas */
+@keyframes mover-luz-1 {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-120px, 100px);
+  }
+}
+
+@keyframes mover-luz-2 {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(100px, -80px);
+  }
+}
+
+@keyframes mover-luz-3 {
+  from {
+    transform: translate(-50px, 30px);
+  }
+  to {
+    transform: translate(80px, -60px);
+  }
+}
+
+/* Respeita a preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .fundo-animado__luz {
+    animation: none;
+  }
 }
