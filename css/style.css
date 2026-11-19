@@ -660,3 +660,63 @@ button:focus-visible {
   outline: 3px solid var(--cor-marca-texto);
   outline-offset: 3px;
 }
+
+
+/* Tela de boas vindas (mano que saco) */
+
+.tela-boas-vindas {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: clamp(2rem, 8vw, 8rem);
+
+  background: var(--cor-papel);
+  transition: opacity 0.7s ease;
+}
+
+.tela-boas-vindas__conteudo {
+  width: 100%;
+  max-width: 620px;
+}
+
+.tela-boas-vindas h1 {
+  background: linear-gradient(90deg, #e8fff6, #34e0a1, #efbf04, #34e0a1, #e8fff6);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: brilho 10s linear infinite;
+  margin-top: 2rem;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.tela-boas-vindas p {
+  max-width: 48ch;
+  margin-block: 1.5rem 2rem;
+  color: var(--cor-tinta-suave);
+  font-size: 1.15rem;
+}
+
+.tela-boas-vindas .botao {
+  min-width: 150px;
+}
+
+@media (max-width: 600px) {
+  .tela-boas-vindas {
+    padding: 2rem;
+  }
+}
+
+/* Animação de saída da tela inicial */
+.tela-boas-vindas.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}

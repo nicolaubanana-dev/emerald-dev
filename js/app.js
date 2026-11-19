@@ -7,6 +7,24 @@ const modal = document.querySelector('#modal-indisponivel');
 const botaoEnviar = formulario.querySelector('button[type="submit"]');
 const mensagemModal = document.querySelector('#modal-mensagem');
 
+// Tela inicial de boas-vindas
+const telaBoasVindas = document.querySelector('#tela-boas-vindas');
+const botaoComecar = document.querySelector('#botao-comecar');
+// Bloqueia a rolagem enquanto a tela inicial estiver aberta
+document.body.style.overflow = 'hidden';
+
+botaoComecar.addEventListener('click', () => {
+  telaBoasVindas.classList.add('fade-out');
+
+  telaBoasVindas.addEventListener('transitionend', () => {
+    telaBoasVindas.hidden = true;
+
+    // Libera a rolagem depois que a tela inicial desaparecer
+    document.body.style.overflow = '';
+  }, { once: true });
+});
+
+
 function lerLista(texto) {
   return texto
     .split(',')
